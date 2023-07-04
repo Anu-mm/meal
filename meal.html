@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Meal App</h1>
+    <form id="mealForm" class="form">
+      <div class="form-group">
+        <label for="mealName">Meal Name</label>
+        <input type="text" id="mealName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="mealDescription">Description</label>
+        <textarea id="mealDescription" class="form-control" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Meal</button>
+    </form>
+
+    <input type="text" id="searchInput" placeholder="Search meals" class="form-control mt-4">
+    <ul id="mealList" class="list-group mt-2"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
