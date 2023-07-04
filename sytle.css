@@ -1,1 +1,56 @@
+// Define an array to store the meals
+let meals = [];
+
+// Get references to the HTML elements
+const mealForm = document.getElementById('mealForm');
+const mealList = document.getElementById('mealList');
+const searchInput = document.getElementById('searchInput');
+
+// Add a new meal to the array and update the list
+function addMeal(name, description) {
+  const meal = {
+    name,
+    description
+  };
+
+  meals.push(meal);
+  renderMeals();
+}
+
+// Render the meals in the list
+function renderMeals() {
+  // Clear the existing list
+  mealList.innerHTML = '';
+
+  // Filter the meals based on the search input
+  const searchTerm = searchInput.value.toLowerCase();
+  const filteredMeals = meals.filter(meal =>
+    meal.name.toLowerCase().includes(searchTerm) ||
+    meal.description.toLowerCase().includes(searchTerm)
+  );
+
+  // Render each meal as a list item
+  filteredMeals.forEach(meal => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
+    listItem.innerHTML = `<h4>${meal.name}</h4><p>${meal.description}</p>`;
+    mealList.appendChild(listItem);
+  });
+}
+
+// Handle form submission
+mealForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  // Get the values from the form inputs
+  const mealName = document.getElementById('mealName').value;
+  const mealDescription = document.getElementById('mealDescription').value;
+
+  // Add the meal and reset the form
+  addMeal(mealName, mealDescription);
+  mealForm.reset();
+});
+
+// Handle search input
+searchInput.addEventListener('input', renderMeals);
 
